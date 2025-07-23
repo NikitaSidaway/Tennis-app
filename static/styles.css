@@ -19,8 +19,17 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 }
 
 h1 {
-  font-size: 100px;
-  font-weight: 900;
+  font-size: 80px;
+  font-weight: 1000;
+}
+
+h2 { 
+  font-size: 60px;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 63px;
+  margin-bottom: 27px;
+
 }
 
 body {
@@ -43,6 +52,17 @@ img {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+.threecoloumn img {
+  height: 250px;
+}
+
+.container a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+
 .hero-image {
   background-image: url("/static/images/placeholder.png");
   background-position: center;
@@ -50,7 +70,7 @@ img {
   background-size: cover;
   position: relative;
   background-color: black;
-  height: 300px;
+  height: 350px;
   width: 100vw; 
   margin-left: -10vw;
 }

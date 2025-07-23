@@ -6,17 +6,22 @@
   </div>
 </div>
 
+<h2>Upcoming Events</h2>
 
-<section class = "threecoloumn">
-    {% for item in results %}
-    <div class = "container">
-        <img src = "./static/images/placeholder.png">
+<section class="threecoloumn">
+  {% for item in results %}
+  <div class="container">
+    <a href="/news/{{ item[0]}}">
+      <img src="./static/images/placeholder.png" alt="Event image">
+      <div class="event-details">
         <h3>{{ item[1] }}</h3>
         <h5>{{ item[2] }}</h5>
         <h4>{{ item[3] }}</h4>
-    </div>
-    {% endfor %}
-
+      </div>
+    </a>
+  </div>
+  {% endfor %}
 </section>
+
 {% endblock %}
 
