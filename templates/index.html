@@ -9,14 +9,31 @@
 <h2>Upcoming Events</h2>
 
 <section class="threecoloumn">
-  {% for item in results %}
+  {% for item in events %}
   <div class="container">
     <a href="/news/{{ item[0]}}">
       <img src="./static/images/placeholder.png" alt="Event image">
       <div class="event-details">
         <h3>{{ item[1] }}</h3>
         <h5>{{ item[2] }}</h5>
-        <h4>{{ item[4] }}</h4>
+        <h4>{{ item[3] }}</h4>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</section>
+
+<h2>Latest News</h2>
+
+<section class="threecoloumn">
+  {% for item in news %}
+  <div class="container">
+    <a href="/news/{{ item[0]}}">
+      <img src="./static/images/placeholder.png" alt="Event image">
+      <div class="event-details">
+        <h3>{{ item[1] }}</h3>
+        <h5>{{ item[2] }}</h5>
+        <h4>{{ item[3] }}</h4>
       </div>
     </a>
   </div>
