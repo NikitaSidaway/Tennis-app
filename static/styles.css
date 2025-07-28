@@ -32,6 +32,10 @@ h2 {
 
 }
 
+date {
+  font-size: 20px;
+}
+
 body {
   width: 80%;
   margin: auto;
@@ -74,6 +78,9 @@ img {
   width: 100vw; 
   margin-left: -10vw;
 }
+
+
+
 
 .hero-text {
   text-align: center;

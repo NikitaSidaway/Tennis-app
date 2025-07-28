@@ -32,8 +32,9 @@ def home():
 
 @app.route('/news/<int:news_id>')
 def show_post(news_id):
-    result = query_db("SELECT * FROM news WHERE news_id = ?", [news_id], one=True)
-    return render_template("news_article.html", result=result)
+    article = query_db("SELECT heading, date, article FROM news WHERE news_id = ?", [news_id], one=True)
+    images = query_db("SELECT file_name, alt FROM images WHERE news_id = ?", [news_id], one=True)
+    return render_template("news_article.html", article = article, images = images)
 
 
 if __name__ == "__main__":
