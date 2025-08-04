@@ -1,5 +1,6 @@
-from flask import Flask, render_template,g
+from flask import Flask, render_template, redirect, request, url_for, g
 import sqlite3
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -37,6 +38,28 @@ def show_post(news_id):
     images = query_db("SELECT file_name, alt FROM images WHERE news_id = ?", [news_id], one=True)
     return render_template("news_article.html", article = article, images = images)
 
+@app.route('/admin')
+def admin():
+    return render_template("admin.html",)
+
+@app.post('/add_item')
+def add_item():
+    
+    uploadFolder = 'static/images/'
+    file = request.files['file']
+
+    filename = secure_filename(file.filename)
+    file.save(uploadFolder+filename)
+
+    sql = "INSERT INTO images (file_name) VALUES (?);"  
+    query_db(sql,(filename,))
+    get_db().commit()
+    return redirect('/') 
+
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
+
