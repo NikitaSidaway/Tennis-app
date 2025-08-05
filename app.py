@@ -18,11 +18,15 @@ def close_connection(exception):
     if db is not None:
         db.close()
 
-def query_db(query, args=(), one=False):
+def query_db(query, args=(), one=False, inserting=False):
     cur = get_db().execute(query, args)
     rv = cur.fetchall()
     cur.close()
-    return (rv[0] if rv else None) if one else rv
+    if inserting:
+        get_db().commit()
+        return cur.lastrowid
+    else:
+        return (rv[0] if rv else None) if one else rv
 
 @app.route("/")
 def home():
@@ -46,13 +50,31 @@ def admin():
 def add_item():
     
     uploadFolder = 'static/images/'
+    
     file = request.files['file']
+    heading = request.form['heading']
+    date = request.form['date']
+    sentence = request.form['article_sentence']
+    text = request.form['article_text']
+    alt_text = request.form['alt_text']
 
     filename = secure_filename(file.filename)
     file.save(uploadFolder+filename)
 
-    sql = "INSERT INTO images (file_name) VALUES (?);"  
-    query_db(sql,(filename,))
+    sql = "INSERT INTO images (file_name, alt, news_id) VALUES (?, ?, ?);"  
+
+
+    sql2 = """
+        INSERT INTO news (heading, date, article_sentence, article)
+        VALUES (?, ?, ?, ?);
+    """
+
+    id = query_db(sql2,(heading, date, sentence, text),inserting=True)
+
+
+    query_db(sql,(filename, alt_text, id))
+
+
     get_db().commit()
     return redirect('/') 
 

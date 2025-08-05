@@ -10,10 +10,27 @@
         
         <form action="/add_item" method="post" enctype='multipart/form-data'>
 
-
+            
+            <label for="heading">Article heading:</label><br>
+            <input type="text" id="heading" name="heading">
+            <br>
+            <label for="date">Article date:</label><br>
+            <input type="text" id="date" name="date">
+            <br>
+            <label for="article_sentence">Article sentence:</label><br>
+            <input type="text" id="article_sentence" name="article_sentence">
+            <br>
+            <label for="article_text">Article text:</label><br>
+            <input type="text" id="article_text" name="article_text">
+            <br>
+            <label for="file">Article image:</label><br>
             <input type="file" name="file">
+            <br>
+            <label for="alt_text">Alt text:</label><br>
+            <input type="text" id="alt_text" name="alt_text">
+            <br>
             <input type="submit" value="Add">
-
+            
         </form>
 
     </body>
