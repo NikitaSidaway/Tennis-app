@@ -1,44 +1,49 @@
 {% extends "layout.html" %}
 {% block body %}
-<div class="hero-image">
-  <div class="hero-text">
-    <h1>Club Updates & Events</h1>
-  </div>
-</div>
 
-<h2>Upcoming Events</h2>
 
-<section class="threecoloumn">
-  {% for item in events %}
-  <div class="container">
-
-    <img src="./static/images/placeholder.png" alt="Event image">
-    <div class="event-details">
-      <h3>{{ item[1] }}</h3>
-      <h5>{{ item[2] }}</h5>
-      <h4>{{ item[3] }}</h4>
+<div class="page-wrapper">
+  <div class="hero-image">
+    <div class="hero-text">
+      <h1>Club Updates & Events</h1>
     </div>
-
   </div>
-  {% endfor %}
-</section>
 
-<h2>Latest News</h2>
+  <h2>Upcoming Events</h2>
 
-<section class="threecoloumn">
-  {% for item in news %}
-  <div class="container">
-    <a href="/news/{{ item[0]}}">
+  <section class="threecoloumn">
+    {% for item in events %}
+    <div class="container">
+
       <img src="./static/images/placeholder.png" alt="Event image">
       <div class="event-details">
         <h3>{{ item[1] }}</h3>
         <h5>{{ item[2] }}</h5>
         <h4>{{ item[3] }}</h4>
       </div>
-    </a>
-  </div>
-  {% endfor %}
-</section>
+
+    </div>
+    {% endfor %}
+  </section>
+
+  <h2>Latest News</h2>
+
+  <section class="threecoloumn">
+    {% for item in news %}
+    <div class="container">
+      <a href="/news/{{ item[0]}}">
+        <img src="./static/images/placeholder.png" alt="Event image">
+        <div class="event-details">
+          <h3>{{ item[1] }}</h3>
+          <h5>{{ item[2] }}</h5>
+          <h4>{{ item[3] }}</h4>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </section>
+</div>
+
 
 {% endblock %}
 

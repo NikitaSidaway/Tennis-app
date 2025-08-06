@@ -19,6 +19,12 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 
 }
 
+.w3-content, .w3-container {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+
 h1 {
   font-size: 80px;
   font-weight: 1000;
@@ -55,6 +61,7 @@ img {
     gap:4em;
     grid-template-columns: 1fr 1fr 1fr;
     width: 80%;
+    margin: 0 auto;
 }
 
 .threecoloumn img {
@@ -77,7 +84,7 @@ img {
   background-color: black;
   height: 350px;
   width: 100vw; 
-  margin-left: -10vw;
+
 }
 
 
