@@ -1,37 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-        <title>Cashmere Tennis Club</title>
-    </head>
-    <body>
-        
-        <form action="/add_item" method="post" enctype='multipart/form-data'>
 
+{% extends "layout.html" %}
+{% block body %}
+<div class="w3-card-4 input-form w3-light-grey">
+<form action="/add_item" method="post" enctype='multipart/form-data'>
             
-            <label for="heading">Article heading:</label><br>
-            <input type="text" id="heading" name="heading">
-            <br>
-            <label for="date">Article date:</label><br>
-            <input type="text" id="date" name="date">
-            <br>
-            <label for="article_sentence">Article sentence:</label><br>
-            <input type="text" id="article_sentence" name="article_sentence">
-            <br>
-            <label for="article_text">Article text:</label><br>
-            <input type="text" id="article_text" name="article_text">
-            <br>
-            <label for="file">Article image:</label><br>
-            <input type="file" name="file">
-            <br>
-            <label for="alt_text">Alt text:</label><br>
-            <input type="text" id="alt_text" name="alt_text">
-            <br>
-            <input type="submit" value="Add">
             
-        </form>
-
-    </body>
-</html>
+    <label for="heading">Article heading:</label><br>
+    <input class="w3-input w3-border w3-round-large" type="text" id="heading" name="heading">
+    <br>
+    <label for="date">Article date:</label><br>
+    <input class="w3-input w3-border w3-round-large" type="text" id="date" name="date">
+    <br>
+    <label for="article_sentence">Article sentence:</label><br>
+    <input class="w3-input w3-border w3-round-large" type="text" id="article_sentence" name="article_sentence">
+    <br>
+    <label for="article_text">Article text:</label><br>
+    <textarea class="w3-input w3-border w3-round-large" type="text" id="article_text" name="article_text"></textarea>
+    <br>
+    <label for="file">Article image:</label><br>
+    <input class="w3-input w3-border w3-round-large" type="file" name="file">
+    <br>
+    <label for="alt_text">Alt text:</label><br>
+    <input class="w3-input w3-border w3-round-large" type="text" id="alt_text" name="alt_text">
+    <br>
+    <input type="submit" value="Submit Information">
+            
+</form>
+</div>
+{% endblock %}
