@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, url_for, g
+from flask import Flask, render_template, redirect, request, url_for, g, session
 import sqlite3
 from werkzeug.utils import secure_filename
 
@@ -45,6 +45,33 @@ def show_post(news_id):
 @app.route('/admin')
 def admin():
     return render_template("admin_login.html",)
+
+@app.post('/admin_login')
+def admin_login():
+
+    username = request.form['username']
+    password = request.form['password']
+
+    if not username or not password:
+        error = "Username and password are required."
+        return render_template("admin_login.html", error=error)
+
+    user = query_db("SELECT username, password FROM logins WHERE username = ? and password = ?", [username, password], one=True)
+
+    if user:
+        return redirect('/admin/dashbaord')
+    else:
+        error = "Username or password is incorrect."
+        return render_template("admin_login.html", error=error)
+
+
+@app.route('/admin/dashboard')
+def admin_dashboard():
+    return render_template('admin.html')
+            
+
+
+
 
 @app.post('/add_item')
 def add_item():

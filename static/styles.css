@@ -39,12 +39,15 @@ h2 {
 
 }
 
+
+
 date {
   font-size: 20px;
 }
 
 body {
   margin: auto;
+  
 }
 
 ol, ul {
@@ -55,6 +58,8 @@ img {
   width: 100%;
   height: auto;
 }
+
+
 
 .threecoloumn {
     display:grid;
@@ -114,10 +119,24 @@ img {
   color: #222;    
 }
 
-input[type="text"],
-textarea {
-  padding: 12px 16px;
+.login-form{
+  width: 25%;
+  margin: auto;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-top: 250px;
+
+  font-family: "DM Sans";
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;    
 }
+
+input[type="text"], input[type="password"], textarea {
+  padding: 12px 16px;
+  margin-bottom: 15px;
+}
+
 
 #article_text {
   height: 120px;
@@ -137,7 +156,8 @@ input[type="submit"] {
   transition: background-color 0.3s ease, transform 0.2s ease;
   width: 100%;                 
   max-width: 300px;            
-  margin: 0 auto;                
+  margin: 0 auto;    
+  margin-top: 25px;      
   display: block;
 }
 

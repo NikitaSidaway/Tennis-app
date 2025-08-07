@@ -1,6 +1,24 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<h1>hi</h1>
+<div class="w3-card-4 login-form w3-light-grey">
+<form action="/admin_login" method="post" enctype='multipart/form-data'>
+            
+    {% if error %}
+    <div class="w3-panel w3-red w3-round-large">
+        <p>{{ error }}</p>
+    </div>
+    {% endif %}
+
+    <label for="username">Username:</label>
+    <input class="w3-input w3-border w3-round-large" type="text" id="username" name="username">
+
+    <label for="password">Password:</label>
+    <input class="w3-input w3-border w3-round-large" type="password" id="password" name="password">
+
+    <input type="submit" value="Login">
+
+</form>
+</div>
 
 {% endblock %}
