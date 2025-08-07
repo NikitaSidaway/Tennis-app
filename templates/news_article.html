@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-        <title>Cashmere Tennis Club</title>
-    </head>
-    <body>
+{% extends "layout.html" %}
+{% block body %}
+    
+<body>
         
-        <div class="hero-image" style="background-image: url('{{ images }}');">
-            <div class="hero-text">
-                <h1>{{ article[0] }}</h1>
-            </div>
+    <div class="hero-image" style="background-image: url('{{ images }}');">
+        <div class="hero-text">
+            <h1>{{ article[0] }}</h1>
         </div>
+    </div>
 
-        <article>
-            <date>{{ article[1] }}</date>
-            <p>{{ article[2]|safe }}</p>
-        </article>
+    <article>
+        <date>{{ article[1] }}</date>
+        <p>{{ article[2]|safe }}</p>
+    </article>
 
-    </body>
-</html>
+ </body>
+
+{% endblock %}

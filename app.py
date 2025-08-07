@@ -44,7 +44,7 @@ def show_post(news_id):
 
 @app.route('/admin')
 def admin():
-    return render_template("admin.html",)
+    return render_template("admin_login.html",)
 
 @app.post('/add_item')
 def add_item():
