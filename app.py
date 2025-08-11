@@ -59,7 +59,7 @@ def admin_login():
     user = query_db("SELECT username, password FROM logins WHERE username = ? and password = ?", [username, password], one=True)
 
     if user:
-        return redirect('/admin/dashbaord')
+        return redirect('/admin/dashboard')
     else:
         error = "Username or password is incorrect."
         return render_template("admin_login.html", error=error)
