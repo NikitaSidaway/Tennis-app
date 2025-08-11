@@ -30,9 +30,13 @@ def query_db(query, args=(), one=False, inserting=False):
 
 @app.route("/")
 def home():
+    return render_template("home.html")
+
+@app.route("/news")
+def news():
     news = query_db("SELECT * FROM news")
     events = query_db("SELECT * FROM events")
-    return render_template("index.html", news = news, events = events)
+    return render_template("news_events.html", news = news, events = events)
 
 
 
