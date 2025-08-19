@@ -112,6 +112,10 @@ img {
   font-weight: 600;
 }
 
+.navbar-container {
+  padding-left: 100px;
+}
+
 .threecoloumn {
     display:grid;
     gap:4em;

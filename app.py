@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, request, url_for, g, session
 import sqlite3
 from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
@@ -60,9 +61,9 @@ def admin_login():
         error = "Username and password are required."
         return render_template("admin_login.html", error=error)
 
-    user = query_db("SELECT username, password FROM logins WHERE username = ? and password = ?", [username, password], one=True)
+    user = query_db("SELECT username, password FROM logins WHERE username = ?", (username,), one=True)
 
-    if user:
+    if user and check_password_hash(user[1], password):
         return redirect('/admin/dashboard')
     else:
         error = "Username or password is incorrect."
