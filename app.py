@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "SuperDuperSecret"
 
 DATABASE = 'database.db'
 
@@ -15,6 +16,7 @@ def get_db():
 
 @app.teardown_appcontext
 def close_connection(exception):
+    # session["user"] = None
     db = getattr(g, '_database', None)
     if db is not None:
         db.close()
@@ -64,11 +66,16 @@ def admin_login():
     user = query_db("SELECT username, password FROM logins WHERE username = ?", (username,), one=True)
 
     if user and check_password_hash(user[1], password):
+        session["user"] = user
         return redirect('/admin/dashboard')
     else:
         error = "Username or password is incorrect."
         return render_template("admin_login.html", error=error)
 
+@app.get('/admin_logout')
+def admin_logout():
+    session["user"] = None
+    return redirect('/')
 
 @app.route('/admin/dashboard')
 def admin_dashboard():

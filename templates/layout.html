@@ -14,6 +14,12 @@
     <div class="w3-bar w3-red navbar">
         <a href="/" class="w3-bar-item w3-button">Home</a>
         <a href="/news" class="w3-bar-item w3-button">Events</a>
+        {% if not session["user"] %}
+            <a href="/admin" class="w3-bar-item w3-button">Login</a>
+        {% else %}
+            <a href="/admin/dashboard" class="w3-bar-item w3-button">Dashboard</a>
+            <a href="/admin_logout" class="w3-bar-item w3-button">Logout</a>
+        {% endif %}
     </div>
 
     {% block body%}{%endblock%}
