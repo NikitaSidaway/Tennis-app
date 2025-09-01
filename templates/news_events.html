@@ -34,18 +34,16 @@
   <section class="threecoloumn">
     {% for item in news %}
     <div class="container">
-      <a href="/news/{{ item[0]}}">
-        
-        <div class="w3-card-4 cards">
-          <img src="./static/images/{{ item[4] }}" alt="Event image">
-        </div>
+     
+      <div class="w3-card-4 cards">
+        <img src="./static/images/{{ item[4] }}" alt="Event image">
+      </div>
 
-        <div class="event-details">
-          <h3>{{ item[1] }}</h3>
-          <h4>{{ item[2] }}</h4>
-          <h5>{{ item[3] }}</h5>
-        </div>
-      </a>
+      <div class="event-details">
+        <h3>{{ item[1] }}</h3>
+        <h4>{{ item[2] }}</h4>
+        <h5>{{ item[3] }}</h5>
+      </div>
     </div>
     {% endfor %}
   </section>
