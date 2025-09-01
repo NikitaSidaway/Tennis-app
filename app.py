@@ -70,10 +70,12 @@ def news():
             events.date ASC;
     """
     events = query_db(events_query)
-    
+
     return render_template("news_events.html", news=news_items, events=events)
 
-
+@app.route('/coaching')
+def coaching():
+    return render_template("coaching.html",)
 
 @app.route('/news/<int:news_id>')
 def show_post(news_id):
