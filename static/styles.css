@@ -28,15 +28,15 @@ body, p, h1, h2, h3, h4, h5, h6, p, ol, ul {
 h1 {
   font-size: 75px;
   font-weight: 1000;
+  color: white;
 }
 
 h2 { 
   font-size: 55px;
-  font-weight: 900;
+  font-weight: 925;
   text-align: center;
   margin-top: 60px;
   margin-bottom: 20px;
-
 }
 
 h3 {
@@ -54,6 +54,16 @@ h5 {
   font-weight: 400;
   font-size: 17px;
   margin-top: 7px;
+}
+
+
+
+.textoverlay {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
 }
 
 p {
@@ -77,6 +87,7 @@ img {
   width: 100%;
   height: auto;
   border-radius: 13px;
+  object-fit: cover
 }
 
 .cards {
@@ -151,10 +162,20 @@ img {
 
 .home-threecoloumn {
   border-radius: 13px;
+  position: relative;
 }
 
 .home-threecoloumn img {
   height: 525px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.home-threecoloumn h2 {
+  font-size: 55px;
+  margin-top: 75px;
+  color: white;
+    text-shadow: 4px 4px 4px #000000;
 }
 
 
@@ -162,7 +183,7 @@ img {
 
 
 .hero-image {
-  background-image: url("/static/images/placeholder.png");
+  background-image: url("/static/images/tenniscourts.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
