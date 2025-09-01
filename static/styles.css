@@ -151,9 +151,10 @@ img {
 
 .home-wrapper-threecoloumn {
   width: 100%;
-  padding: 65px 0;
+  padding: 55px 0;
   background-color: #e1e1e1;
   margin-top: 60px;
+
 }
 
 .grey-wrapper-threecoloumn {
@@ -234,7 +235,7 @@ img {
   background-size: cover;
   position: relative;
   background-color: black;
-  height: 400px;
+  height: 390px;
   width: 100vw; 
 
 }
