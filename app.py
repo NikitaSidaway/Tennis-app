@@ -100,18 +100,13 @@ def add_item():
     filename = secure_filename(file.filename)
     file.save(uploadFolder+filename)
 
-    sql = "INSERT INTO images (file_name, alt, news_id) VALUES (?, ?, ?);"  
+    sql_image = "INSERT INTO images (file_name, alt) VALUES (?, ?);" 
 
+    image_id = query_db(sql_image, (filename, alt_text), inserting=True)
 
-    sql2 = """
-        INSERT INTO news (heading, date, article_sentence, article)
-        VALUES (?, ?, ?, ?);
-    """
+    sql_news = "INSERT INTO news (heading, date, article_sentence, article, image_id) VALUES (?, ?, ?, ?, ?);"
 
-    id = query_db(sql2,(heading, date, sentence, text),inserting=True)
-
-
-    query_db(sql,(filename, alt_text, id))
+    query_db(sql_news, (heading, date, sentence, text, image_id))
 
 
     get_db().commit()
