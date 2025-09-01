@@ -37,9 +37,41 @@ def home():
 
 @app.route("/news")
 def news():
-    news = query_db("SELECT * FROM news")
-    events = query_db("SELECT * FROM events")
-    return render_template("news_events.html", news = news, events = events)
+    news_query = """
+        SELECT
+            news.news_id AS id, 
+            news.heading,
+            news.date,
+            news.information,
+            images.file_name,
+            images.alt
+        FROM
+            news
+        JOIN
+            images ON news.image_id = images.image_id 
+        ORDER BY
+            news.date DESC;
+    """
+    news_items = query_db(news_query)
+
+    events_query = """
+        SELECT
+            events.event_id AS id,
+            events.heading,
+            events.date,
+            events.information,
+            images.file_name,
+            images.alt
+        FROM
+            events
+        JOIN
+            images ON events.image_id = images.image_id
+        ORDER BY
+            events.date ASC;
+    """
+    events = query_db(events_query)
+    
+    return render_template("news_events.html", news=news_items, events=events)
 
 
 
@@ -93,8 +125,7 @@ def add_item():
     file = request.files['file']
     heading = request.form['heading']
     date = request.form['date']
-    sentence = request.form['article_sentence']
-    text = request.form['article_text']
+    text = request.form['article_information']
     alt_text = request.form['alt_text']
 
     filename = secure_filename(file.filename)
@@ -104,9 +135,9 @@ def add_item():
 
     image_id = query_db(sql_image, (filename, alt_text), inserting=True)
 
-    sql_news = "INSERT INTO news (heading, date, article_sentence, article, image_id) VALUES (?, ?, ?, ?, ?);"
+    sql_news = "INSERT INTO news (heading, date, information, image_id) VALUES (?, ?, ?, ?);"
 
-    query_db(sql_news, (heading, date, sentence, text, image_id))
+    query_db(sql_news, (heading, date, text, image_id))
 
 
     get_db().commit()
