@@ -114,20 +114,19 @@ def admin_logout():
 @app.route('/admin/dashboard')
 def admin_dashboard():
     return render_template('admin.html')
-            
-
 
 
 
 @app.post('/add_item')
 def add_item():
     
+
     uploadFolder = 'static/images/'
     
     file = request.files['file']
     heading = request.form['heading']
     date = request.form['date']
-    text = request.form['article_information']
+    text = request.form['information']
     alt_text = request.form['alt_text']
 
     filename = secure_filename(file.filename)

@@ -2,16 +2,15 @@
 {% block body %}
 <div class="w3-card-4 input-form w3-light-grey">
 <form action="/add_item" method="post" enctype='multipart/form-data'>
-            
-            
-    <label for="heading">Article heading:</label>
+
+    <label for="heading">Article name:</label>
     <input class="w3-input w3-border w3-round-large" type="text" id="heading" name="heading">
     
     <label for="date">Article date:</label>
     <input class="w3-input w3-border w3-round-large" type="text" id="date" name="date">
 
     <label for="article_text">Article information:</label>
-    <textarea class="w3-input w3-border w3-round-large" type="text" id="article_information" name="article_information"></textarea>
+    <textarea class="w3-input w3-border w3-round-large" type="text" id="information" name="article_information"></textarea>
     
     <label for="file">Article image:</label>
     <input class="w3-input w3-border w3-round-large" type="file" name="file">
