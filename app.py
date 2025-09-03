@@ -113,7 +113,11 @@ def admin_logout():
 
 @app.route('/admin/dashboard')
 def admin_dashboard():
-    return render_template('admin.html')
+    if session["user"]:
+        return render_template('admin.html')
+    else:
+        return redirect('/')
+
 
 
 
