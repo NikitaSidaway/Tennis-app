@@ -131,14 +131,13 @@ def add_item():
     heading = request.form['heading']
     date = request.form['date']
     text = request.form['information']
-    alt_text = request.form['alt_text']
 
     filename = secure_filename(file.filename)
     file.save(uploadFolder+filename)
 
-    sql_image = "INSERT INTO images (file_name, alt) VALUES (?, ?);" 
+    sql_image = "INSERT INTO images (file_name) VALUES (?);" 
 
-    image_id = query_db(sql_image, (filename, alt_text), inserting=True)
+    image_id = query_db(sql_image, (filename,), inserting=True)
 
     sql_news = "INSERT INTO news (heading, date, information, image_id) VALUES (?, ?, ?, ?);"
 
